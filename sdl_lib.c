@@ -471,6 +471,7 @@ PlBool gp_SDL_PollEvent(PlTerm *event)
 
   if (0 == SDL_PollEvent(&ev)) {
     *event = Pl_Mk_Integer(-1);
+	return PL_TRUE;
   }
   else {
     switch(ev.type)
@@ -496,21 +497,11 @@ PlBool gp_SDL_PollEvent(PlTerm *event)
 	case SDL_USEREVENT:        EVB_TERM(evUserEvent);
 
 	default:
-	  //sprintf(szTerm, "unhandled(%u)", ev.type);
-	  szTerm[0] = (char)0;
+	  szTerm[0] = 0;
     }
 
-    // Only copy the term if the term string was written to
-    // otherwise we assume the *handler* wrote into "term"
-    if (szTerm[0]) {
-      term = Pl_Read_From_String(szTerm);
-    }
-
-#ifdef __DEBUG__
-    Pl_Write(term); fprintf(stdout, "\n");
-#endif
-
-    Pl_Copy_Term(event, &term);
+    term = Pl_Read_From_String(szTerm);
+	Pl_Copy_Term(event, &term);
   }
   return PL_TRUE;
 }
