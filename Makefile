@@ -18,6 +18,10 @@ tags:
 sdl_ubuntu:
 	gplc \
 		-C -U__DEBUG__ \
+	--new-top-level \
+	--fixed-sizes \
+	-s \
+	--pic \
 	-C -I/usr/include/SDL2 \
 	-L -L/usr/lib/x86_64-linux-gnu \
 	-o sdltest \
@@ -25,8 +29,7 @@ sdl_ubuntu:
 	-L -lSDL2 \
 	-L -lSDL2_ttf \
 	-L -lSDL2_image \
-	-L -lSDL2_mixer \
-	--new-top-level
+	-L -lSDL2_mixer
 
 sdl_osx:
 	gplc \

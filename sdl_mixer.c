@@ -288,6 +288,14 @@ PlBool gp_Mix_PlayChannel(PlLong channel, PlLong chunk, PlLong loops, PlLong *ou
   return PL_TRUE;
 }
 
+PlBool gp_Mix_HaltChannel(PlLong channel)
+{
+	if(0 == Mix_HaltChannel(channel)){
+		return PL_TRUE;
+	}
+	return PL_FALSE;
+}
+
 
 PlBool gp_Mix_PlayChannelTimed(
     PlLong channel, PlLong chunk,

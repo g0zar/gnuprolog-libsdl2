@@ -226,11 +226,12 @@
 :-foreign(mix_AllocateChannels(+integer, -integer), [fct_name(gp_Mix_AllocateChannels)]).
 :-foreign(mix_Volume(+integer, +integer, -integer), [fct_name(gp_Mix_Volume)]).
 :-foreign(mix_PlayChannel(+integer, +positive, +integer, -integer), [fct_name(gp_Mix_PlayChannel)]).
+:-foreign(mix_HaltChannel(+integer), [fct_name(gp_Mix_HaltChannel)]).
 :-foreign(mix_PlayChannelTimed(+integer, +positive, +integer, +integer, -integer), [fct_name(gp_Mix_PlayChannelTimed)]).
 
 %%====================================================================
 %%
-%%                    SDL_mixer  (Audio)
+%%                    SDL_Image
 %%
 %%====================================================================
 :-foreign(img_Linked_Version(-positive, -positive, -positive), [fct_name(gp_IMG_Linked_Version)]).
