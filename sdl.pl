@@ -50,6 +50,8 @@ mix_Init(Flags) :-
 
 
 
+% NOTE: we could remove webp so that we dont have to include
+% those libraries, we likely wont be using them anyway
 img_Init :-
 	img_Init([jpg, png, tif, webp]).
 

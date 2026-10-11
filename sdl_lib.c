@@ -630,7 +630,10 @@ PlBool gp_SDL_LogToFile(char* filename)
   }
   else {
     fclose(stderr);
+#ifndef __MINGW__
+	//XXX: for some reason doesnt compile on mingw
     stderr = g_oldStdErr;
+#endif
     g_oldStdErr = NULL;
     g_errFile = NULL;
   }

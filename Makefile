@@ -3,10 +3,35 @@
 
 .PHONY: tags
 
-.DEFAULT_GOAL := default
+.DEFAULT_GOAL := mingw64
 
 default: sdl_ubuntu
 	cp ./sdltest ~/.local/bin/gprolog-sdl2
+
+
+
+mingw64:
+	wine gplc \
+		-C -U__DEBUG__ \
+	-C -D__MINGW__ \
+	--new-top-level \
+	--fixed-sizes \
+	-s \
+	--pic \
+	-C -IZ:\\usr\\local\\x86_64-w64-mingw32\\include\\ \
+	-C -IZ:\\usr\\local\\x86_64-w64-mingw32\\include\\SDL2\\ \
+	-C -fpermissive \
+	-o build/sdltest \
+	sdl-ffi.pl sdl.pl sdl_lib.c sdl_thread.c sdl_ttf.c sdl_mixer.c sdl_image.c \
+	-L -LZ:\\usr\\local\\x86_64-w64-mingw32\\bin\\ \
+	-L -lSDL2 \
+	-L -lSDL2_ttf \
+	-L -lSDL2_image \
+	-L -lSDL2_mixer 
+	cp /usr/local/x86_64-w64-mingw32/bin/SDL2*.dll build/
+	cp /usr/local/x86_64-w64-mingw32/bin/libmpg123-0.dll build/
+
+
 
 tags:
 	rm -f TAGS
@@ -44,6 +69,7 @@ clean:
 	rm *~
 	rm -fr html
 	rm sdltest
+	rm sdltest.exe
 
 doc:
 	doxygen Doxyfile

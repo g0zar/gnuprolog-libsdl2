@@ -114,7 +114,7 @@ draw_a_dot(R, N) :-
 
 
 textest(F) :-
-	format_to_codes(Filename, "/Users/seancharles/Pictures/~s", [F]),
+	format_to_codes(Filename, "./~s", [F]),
 	sdl_Init([video]),
 	img_Init,
 	sdl_CreateWindow("Texture Test", undefined, undefined, 0, 0, [], W),

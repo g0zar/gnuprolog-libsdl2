@@ -1,0 +1,30 @@
+
+To compile a .exe a wine environment is needed with
+gcc-15 at the least and gnu prolog version 1.5.0 installed on it
+once installed, grab the SDL2 libraries from
+
+https://github.com/libsdl-org/SDL_ttf/releases#release-release-2.24.0
+
+and related sites. Versions need to be 
+SDL2-2.32
+SDL2_ttf-2.24
+...
+...
+...
+
+make sure they are placed inside /usr/local/x86_64-w64-mingw32/bin
+this is done automatically with `make cross` when unpacking and installing
+the mingw64 packages
+
+
+then run make and it should compile
+
+------------------------------------------
+
+To run properly with hardware acceleration under wine
+
+What made it work is the following:
+	setting x11 to be the graphics driver
+	setting renderer to gl
+	disable DLL overrides
+	sound set to pulseaudio (although sound was working fine before)
